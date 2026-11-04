@@ -1,7 +1,7 @@
 import { defineConfig } from '@playwright/test'
 
-// Repro runs the app itself on a free port and passes its URL in REPRO_BASE_URL.
-const external = process.env.REPRO_BASE_URL
+// Gecko runs the app itself on a free port and passes its URL in GECKO_BASE_URL.
+const external = process.env.GECKO_BASE_URL ?? process.env.REPRO_BASE_URL
 
 export default defineConfig({
   testDir: './tests',

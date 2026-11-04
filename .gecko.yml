@@ -1,7 +1,7 @@
-# How Repro runs this app. See https://github.com/navyabijoy/meta-hack
+# How Gecko runs this app. See https://github.com/navyabijoy/meta-hack
 install: npm ci
 start: npx vite --port {port} --strictPort --host 127.0.0.1
 ready_path: /
 test: npx playwright test
-test_dir: tests/repro
+test_dir: tests/gecko
 fresh_state: [localStorage]
