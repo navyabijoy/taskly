@@ -1,0 +1,7 @@
+# How Repro runs this app. See https://github.com/navyabijoy/meta-hack
+install: npm ci
+start: npx vite --port {port} --strictPort --host 127.0.0.1
+ready_path: /
+test: npx playwright test
+test_dir: tests/repro
+fresh_state: [localStorage]
