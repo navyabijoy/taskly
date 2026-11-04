@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 type Task = { id: number; title: string; done: boolean }
@@ -26,6 +26,7 @@ export default function App() {
   const [draft, setDraft] = useState('')
   const [filter, setFilter] = useState<Filter>('all')
   const [left, setLeft] = useState(() => load().filter((t) => !t.done).length)
+  const savingRef = useRef(false)
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
@@ -34,10 +35,16 @@ export default function App() {
   async function addTask() {
     const title = draft.trim()
     if (!title) return
-    const saved = await saveToServer({ id: nextId++, title, done: false })
-    setTasks((prev) => [...prev, saved])
-    setLeft((n) => n + 1)
+    if (savingRef.current) return
+    savingRef.current = true
     setDraft('')
+    try {
+      const saved = await saveToServer({ id: nextId++, title, done: false })
+      setTasks((prev) => [...prev, saved])
+      setLeft((n) => n + 1)
+    } finally {
+      savingRef.current = false
+    }
   }
 
   function toggle(id: number) {
