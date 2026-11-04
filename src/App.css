@@ -1,0 +1,37 @@
+.app {
+  max-width: 520px;
+  margin: 48px auto;
+  padding: 0 16px;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: #1c1917;
+}
+header h1 { margin: 0; font-size: 32px; letter-spacing: -0.02em; }
+.sub { margin: 4px 0 24px; color: #78716c; }
+.composer { display: flex; gap: 8px; }
+.composer input {
+  flex: 1; padding: 12px 14px; font-size: 16px;
+  border: 1px solid #d6d3d1; border-radius: 10px;
+}
+.composer button {
+  padding: 0 20px; font-size: 16px; font-weight: 600;
+  background: #1c1917; color: white; border: 0; border-radius: 10px; cursor: pointer;
+}
+.filters { display: flex; gap: 4px; margin: 20px 0 8px; }
+.filters button {
+  padding: 6px 12px; border: 1px solid transparent; background: none;
+  border-radius: 8px; cursor: pointer; color: #57534e; font-size: 14px;
+}
+.filters button.active { border-color: #d6d3d1; color: #1c1917; font-weight: 600; }
+.list { list-style: none; padding: 0; margin: 0; }
+.list li {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 4px; border-bottom: 1px solid #e7e5e4; font-size: 16px;
+}
+.list label { display: flex; gap: 12px; align-items: center; cursor: pointer; }
+.list li.done span { text-decoration: line-through; color: #a8a29e; }
+.list .empty { color: #a8a29e; justify-content: center; }
+.delete {
+  border: 0; background: none; font-size: 20px; color: #a8a29e; cursor: pointer; padding: 0 8px;
+}
+.delete:hover { color: #dc2626; }
+.count { margin-top: 16px; color: #78716c; font-size: 14px; }
