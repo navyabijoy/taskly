@@ -25,7 +25,7 @@ export default function App() {
   const [tasks, setTasks] = useState<Task[]>(load)
   const [draft, setDraft] = useState('')
   const [filter, setFilter] = useState<Filter>('all')
-  const [left, setLeft] = useState(() => load().filter((t) => !t.done).length)
+  const left = tasks.filter((t) => !t.done).length
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
@@ -36,7 +36,6 @@ export default function App() {
     if (!title) return
     const saved = await saveToServer({ id: nextId++, title, done: false })
     setTasks((prev) => [...prev, saved])
-    setLeft((n) => n + 1)
     setDraft('')
   }
 
