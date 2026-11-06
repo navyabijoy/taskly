@@ -51,8 +51,8 @@ export default function App() {
     setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)))
   }
 
-  function remove(index: number) {
-    setTasks((prev) => prev.filter((_, i) => i !== index))
+  function remove(id: number) {
+    setTasks((prev) => prev.filter((t) => t.id !== id))
   }
 
   const visible = tasks.filter((t) =>
@@ -96,13 +96,13 @@ export default function App() {
       </nav>
 
       <ul className="list">
-        {visible.map((t, i) => (
+        {visible.map((t) => (
           <li key={t.id} className={t.done ? 'done' : ''}>
             <label>
               <input type="checkbox" checked={t.done} onChange={() => toggle(t.id)} />
               <span>{t.title}</span>
             </label>
-            <button className="delete" aria-label={`Delete ${t.title}`} onClick={() => remove(i)}>
+            <button className="delete" aria-label={`Delete ${t.title}`} onClick={() => remove(t.id)}>
               ×
             </button>
           </li>
